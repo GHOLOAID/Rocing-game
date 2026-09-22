@@ -67,5 +67,6 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Rocing-game.slnx"
+    "dotnet.defaultSolution": "Rocing-game.slnx",
+    "python-envs.defaultEnvManager": "ms-python.python:system"
 }
