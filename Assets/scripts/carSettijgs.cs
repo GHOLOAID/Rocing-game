@@ -9,4 +9,7 @@ public class carSettijgs : ScriptableObject
     public float damper;
     public float maxGroundDistance;
     public LayerMask groundMask;
+    public float minSteeringAngle;
+    public float maxSteeringAngle;
+    public float powerSteering;
 }

@@ -14,9 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::carSettijgs
   rideHeight: 0.125
   gravity: 2.5
-  springStrength: 2
-  damper: 0.5
-  maxGroundDistance: 0.5
+  springStrength: 10
+  damper: 10
+  maxGroundDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  minSteeringAngle: -45
+  maxSteeringAngle: 45
+  powerSteering: 1

@@ -1052,7 +1052,7 @@ Transform:
   m_GameObject: {fileID: 807984062}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.605815, y: 1.115, z: 0.577}
+  m_LocalPosition: {x: -9.605815, y: 0.38, z: 3.197}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1078,7 +1078,10 @@ MonoBehaviour:
   - {fileID: 349914928}
   - {fileID: 904811489}
   - {fileID: 223025191}
+  frontWheels:
+  - {fileID: 223025191}
   questionable: {fileID: 11400000, guid: df77b459a6874a94aaf491ee13f54688, type: 2}
+  input: {fileID: -1680190386980627800, guid: 052faaac586de48259a63d0c4782560b, type: 3}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
