@@ -7,7 +7,7 @@ public class PlayerMoverment : MonoBehaviour
     [SerializeField] Rigidbody rb;
     [SerializeField] List <Transform> wheels;
     [SerializeField] List <Transform> frontWheels;
-    [SerializeField] carSettijgs questionable;
+    [SerializeField] [ExposedScriptableObject] carSettijgs questionable;
     [SerializeField] InputActionReference input;
     float currentSteeringAngle;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -20,8 +20,8 @@ public class PlayerMoverment : MonoBehaviour
     void Update()
     {
         Vector2 movementOutput = input.action.ReadValue<Vector2>();
-        float steeringInput = Vector2.Dot(Vector2.right, movementOutput);
-        currentSteeringAngle += steeringInput * questionable.powerSteering;
+        float steeringInput = movementOutput.x;
+        currentSteeringAngle += steeringInput * questionable.powerSteering * Time.deltaTime;
         currentSteeringAngle = Mathf.Clamp(currentSteeringAngle, questionable.minSteeringAngle, questionable.maxSteeringAngle);
         foreach (Transform i in frontWheels)
         {
@@ -34,9 +34,10 @@ public class PlayerMoverment : MonoBehaviour
         foreach (Transform i in wheels)
         {
             RaycastHit hit;
-            if (Physics.Raycast(i.position, -i.up, out hit, questionable.maxGroundDistance, questionable.groundMask))
+            if (Physics.Raycast(i.position, -i.up, out hit, 
+                    questionable.rideHeight + questionable.wheelRadius, questionable.groundMask))
             {
-                TireSpringForce(i, hit.distance);
+                TireSpringForce(i, hit);
             }
             else
             {
@@ -50,15 +51,16 @@ public class PlayerMoverment : MonoBehaviour
         rb.AddForceAtPosition(questionable.gravity*rb.mass*Vector3.down, applicableTire.position);
     }
 
-    void TireSpringForce(Transform applicableTire, float distance)
+    void TireSpringForce(Transform applicableTire, RaycastHit hit)
     {
-        Vector3 springDir = applicableTire.up;
+        Vector3 springDir = hit.normal;
         Vector3 tireVelocity = rb.GetPointVelocity(applicableTire.position);
-        float springLength = questionable.rideHeight - distance;
+        float springLength = questionable.rideHeight - (hit.distance - questionable.wheelRadius);
         float velocityraptor = Vector3.Dot(springDir, tireVelocity);
         float appliedForce = springLength*questionable.springStrength - velocityraptor*questionable.damper;
         rb.AddForceAtPosition(appliedForce*springDir, applicableTire.position);
     }
+    
     void OnEnable()
     {
         input.action.Enable();

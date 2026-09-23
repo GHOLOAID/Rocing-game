@@ -7,7 +7,7 @@ public class carSettijgs : ScriptableObject
     public float gravity;
     public float springStrength;
     public float damper;
-    public float maxGroundDistance;
+    public float wheelRadius;
     public LayerMask groundMask;
     public float minSteeringAngle;
     public float maxSteeringAngle;

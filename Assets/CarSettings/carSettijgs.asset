@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88fe724721aa2104bb635f231e3c40fa, type: 3}
   m_Name: carSettijgs
   m_EditorClassIdentifier: Assembly-CSharp::carSettijgs
-  rideHeight: 0.125
+  rideHeight: 0.4
   gravity: 2.5
-  springStrength: 10
-  damper: 10
-  maxGroundDistance: 0.2
+  springStrength: 100
+  damper: 15
+  wheelRadius: 0.15
   groundMask:
     serializedVersion: 2
     m_Bits: 8
   minSteeringAngle: -45
   maxSteeringAngle: 45
-  powerSteering: 1
+  powerSteering: 100
