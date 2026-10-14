@@ -22,7 +22,7 @@ MonoBehaviour:
     m_Bits: 8
   minSteeringAngle: -45
   maxSteeringAngle: 45
-  powerSteering: 100
+  powerSteering: 75
   frontGripGraph:
     serializedVersion: 2
     m_Curve:

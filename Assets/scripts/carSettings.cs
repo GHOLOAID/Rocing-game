@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-[CreateAssetMenu(fileName = "carSettijgs", menuName = "funny knobs moment")]
-public class carSettijgs : ScriptableObject
+[CreateAssetMenu(fileName = "carSettings", menuName = "funny knobs moment")]
+public class carSettings : ScriptableObject
 {
     [Header("suspension")]
     // suspension
