@@ -22,24 +22,33 @@ MonoBehaviour:
     m_Bits: 8
   minSteeringAngle: -45
   maxSteeringAngle: 45
-  powerSteering: 75
+  powerSteering: 100
   frontGripGraph:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
-      inSlope: -0.040000003
-      outSlope: -0.040000003
+      value: 0.08
+      inSlope: -0.063080795
+      outSlope: -0.063080795
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.6905084
+      value: 0.036442176
+      inSlope: -0.026733369
+      outSlope: -0.026733369
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.34520683
+    - serializedVersion: 3
       time: 1
-      value: 0.06
-      inSlope: -0.040000003
-      outSlope: -0.040000003
+      value: 0.03
+      inSlope: -0.020815352
+      outSlope: -0.020815352
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334
@@ -52,18 +61,27 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.1
-      inSlope: -0.040000003
-      outSlope: -0.040000003
+      value: 0.08
+      inSlope: -0.063080795
+      outSlope: -0.063080795
       tangentMode: 34
       weightedMode: 0
       inWeight: 0
       outWeight: 0.33333334
     - serializedVersion: 3
+      time: 0.6905084
+      value: 0.036442176
+      inSlope: -0.026733369
+      outSlope: -0.026733369
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.34520683
+    - serializedVersion: 3
       time: 1
-      value: 0.06
-      inSlope: -0.040000003
-      outSlope: -0.040000003
+      value: 0.03
+      inSlope: -0.020815352
+      outSlope: -0.020815352
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

@@ -1,0 +1,168 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88fe724721aa2104bb635f231e3c40fa, type: 3}
+  m_Name: carSettings2ElectricBoogaloo
+  m_EditorClassIdentifier: Assembly-CSharp::carSettings
+  rideHeight: -0.12
+  springStrength: 185.8
+  damper: 10
+  gravity: 10.8
+  wheelRadius: 0.5
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 8
+  minSteeringAngle: -45
+  maxSteeringAngle: 45
+  powerSteering: 120
+  frontGripGraph:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 0.005895102
+      outSlope: 0.005895102
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30666667
+    - serializedVersion: 3
+      time: 1
+      value: 0.05
+      inSlope: -0.10851738
+      outSlope: -0.10851738
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19333333
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rearGripGraph:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.1
+      inSlope: 0.005895102
+      outSlope: 0.005895102
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.30666667
+    - serializedVersion: 3
+      time: 1
+      value: 0.05
+      inSlope: -0.10851738
+      outSlope: -0.10851738
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.19333333
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  gears:
+  - scale: -3
+    acceleration:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.84999996
+        value: 0.6586153
+        inSlope: -0.013987711
+        outSlope: -0.013987711
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 1
+        value: 0.65
+        inSlope: -0.13562612
+        outSlope: -0.13562612
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.93333304
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    topSpeed: 1000
+  - scale: 4.8
+    acceleration:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 0.5
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 0.84999996
+        value: 0.6586153
+        inSlope: -0.013987711
+        outSlope: -0.013987711
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 1
+      - serializedVersion: 3
+        time: 1
+        value: 0.65
+        inSlope: -0.13562612
+        outSlope: -0.13562612
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.93333304
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    topSpeed: 1000
+  braking:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.05
+      inSlope: -0.010000002
+      outSlope: -0.010000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0.04
+      inSlope: -0.010000002
+      outSlope: -0.010000002
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
