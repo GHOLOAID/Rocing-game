@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Splines;
+
 [ExecuteAlways]
 public class roadGeneration : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class roadGeneration : MonoBehaviour
         m.SetTriangles(tris, 0);
         filter.mesh = m;
     }
+    
     private void Rebuild()
     {
         if (sampler == null || filter == null || sampler.splineCount == 0)
@@ -75,24 +77,34 @@ public class roadGeneration : MonoBehaviour
         GetRoadSections();
         BuildTheMesh();
     }
+    
     private void OnValidate()
     {
         Rebuild();
     }
+    
     private void OnEnable()
     {
         Spline.Changed += onSplineChanged;
     }
+    
     private void onSplineChanged(Spline s, int i, SplineModification mod)
     {
         Rebuild();
     }
+    
     private void OnDisable()
     {
         Spline.Changed -= onSplineChanged;
     }
+    
     private void Awake()
     {
         Rebuild();
+    }
+
+    public void BuildIntersection(Intersection intersection)
+    {
+        Debug.Log("Build Intersection Called");
     }
 }
