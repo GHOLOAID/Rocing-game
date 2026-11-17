@@ -1,13 +1,27 @@
 using UnityEditor.Splines;
 using System.Collections.Generic;
-using UnityEngine.Splines;
 using System;
 
 namespace UnityEditor.Splines
 {
     public static class SplineToolUtility
     {
-        public static Action OnSelectionChanged;
+        private static Action _onSelectionChanged;
+        public static event Action OnSelectionChanged
+        {
+            add
+            {
+                if (_onSelectionChanged == null)
+                    SplineSelection.changed += OnSelectionChangedFunc;
+                _onSelectionChanged += value;
+            }
+            remove
+            {
+                _onSelectionChanged -= value;
+                if (_onSelectionChanged == null)
+                    SplineSelection.changed -= OnSelectionChangedFunc;
+            }
+        }
 
         public static bool HasSelection()
         {
@@ -29,19 +43,16 @@ namespace UnityEditor.Splines
             return info;
         }
 
-        public static void RegisterSelectionChangedEvent() => SplineSelection.changed += OnSelectionChangedFunc;
-        public static void UnRegisterSelectionChangedEvent() => SplineSelection.changed -= OnSelectionChangedFunc;
-
-        private static void OnSelectionChangedFunc() => OnSelectionChanged?.Invoke();
+        private static void OnSelectionChangedFunc() => _onSelectionChanged?.Invoke();
 
         public struct SelectedSplineElementInfo
         {
-            public Object target;
+            public UnityEngine.Object target;
             public int targetIndex;
             public int knotIndex;
             public int tangentIndex;
 
-            public SelectedSplineElementInfo(Object target, int targetIndex, int knotIndex, int tangentIndex)
+            public SelectedSplineElementInfo(UnityEngine.Object target, int targetIndex, int knotIndex, int tangentIndex)
             {
                 this.target = target;
                 this.targetIndex = targetIndex;

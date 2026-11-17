@@ -9,10 +9,16 @@ public class roadGeneration : MonoBehaviour
     [SerializeField] float width = 2;
     [SerializeField] SplineSampler sampler;
     [SerializeField] MeshFilter filter;
+    [SerializeField] MeshCollider meshCollider;
     [SerializeField] List<Intersection> intersections = new List<Intersection>();
     List<Vector3> left;
     List<Vector3> right;
     [SerializeField] [Range(0.01f, 1f)] float step = 0.05f;
+    
+    //properties to access variables in other classes without giving setter access
+    public float Width => width;
+    public SplineSampler Sampler => sampler;
+    public List<Intersection> Intersections => intersections;
 
     private void GetRoadSections()
     {
@@ -38,7 +44,7 @@ public class roadGeneration : MonoBehaviour
 
     private void BuildTheMesh()
     {
-        Mesh m = new Mesh();
+        Mesh m = new Mesh {name = "ProceduralRoadMesh"};
         List<Vector3> verts = new List<Vector3>();
         List<int> tris = new List<int>();
         int offset = 0;
@@ -66,9 +72,10 @@ public class roadGeneration : MonoBehaviour
             }
         }
 
-        offset = verts.Count;
         for (int i = 0; i < intersections.Count; i++)
         {
+            offset = verts.Count;
+
             int count = 0;
             List<IntersectionEdge> intersectionEdges = new List<IntersectionEdge>();
             Vector3 center = Vector3.zero;
@@ -127,7 +134,7 @@ public class roadGeneration : MonoBehaviour
                 c = Vector3.Lerp(mid, center, 0.3f);
                 curve = new BezierCurve(a, c, b);
 
-                for (float t = step; t < 1; t += step)
+                for (float t = step; t < 1f - (step * 0.5f); t += step)
                 {
                     Vector3 position = CurveUtility.EvaluatePosition(curve, t);
                     curvePoints.Add(position);
@@ -150,16 +157,28 @@ public class roadGeneration : MonoBehaviour
                 tris.Add(offset + ((j-1)*3)+0);
                 tris.Add(offset + ((j-1)*3)+1);
                 tris.Add(offset + ((j-1)*3)+2);
-                
             }
         }
 
         m.SetVertices(verts);
         m.SetTriangles(tris, 0);
-        filter.mesh = m;
+        
+        m.RecalculateNormals();
+        m.RecalculateBounds();
+
+        if (filter != null)
+        {
+            filter.sharedMesh = m;
+        }
+        if (meshCollider != null)
+        {
+            Physics.BakeMesh(m.GetEntityId(), false);
+            meshCollider.sharedMesh = null;
+            meshCollider.sharedMesh = m;
+        }
     }
     
-    private void Rebuild()
+    public void Rebuild()
     {
         if (sampler == null || filter == null || sampler.splineCount == 0)
         {
